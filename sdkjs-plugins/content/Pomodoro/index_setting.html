@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting</title>
+    <script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js"></script>
+    <script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js"></script>
+    <link rel="stylesheet" href="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            padding: 20px;
+            /* background-color: #f2f2f2; */
+        }
+        div {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 70%;
+            padding: 10px;
+            font-size: 14px;
+            /* border: 1px solid #ddd; */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+    <script type="text/javascript">
+        window.Asc.plugin.init = function()
+        {
+            this.resizeWindow(392, 250, 392, 250, 392, 250);
+
+            let focusTime = 25; // 专注时间（25分钟）
+            document.getElementById('focusTime').value = focusTime;
+            let breakTime = 5; // 休息时间（5分钟）
+            document.getElementById('breakTime').value = breakTime;
+        };
+
+        window.Asc.plugin.button = function(id)
+        {
+            let whiteNoise = document.getElementById('whiteNoiseSelection').value;
+            let focusTime = document.getElementById('focusTime').value;
+            let breakTime = document.getElementById('breakTime').value;
+
+            localStorage.setItem('whiteNoise', whiteNoise);
+            localStorage.setItem('focusTime', focusTime);
+            localStorage.setItem('breakTime', breakTime);
+
+            this.executeCommand("close", "");
+        };
+    </script>
+</head>
+<body>
+    <div>
+        <label for="whiteNoiseSelection" id="label_chooseWhiteNoise">选择白噪音</label>
+        <select id="whiteNoiseSelection">
+            <option value="none">无</option>
+            <option value="flames">火苗</option>
+            <option value="waterflow">流水</option>
+            <option value="rain">雨声</option>
+        </select>
+    </div>
+    <div>
+        <label for="tokenInput">专注时间:</label>
+        <input type="text" id="focusTime" placeholder="25">
+        <text>分钟</text>
+    </div>
+    <div></div>
+        <label for="tokenInput">放松时间:</label>
+        <input type="text" id="breakTime" placeholder="5">
+        <text>分钟</text>
+    </div>
+</body>
+</html>
