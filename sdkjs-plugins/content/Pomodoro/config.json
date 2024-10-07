@@ -29,15 +29,15 @@
             "events"              : ["onClick"],
             "store"               : {
                 "background": {
-                    "light": "#7c84e8",
-                    "dark": "#5f55af"
+                    "light": "#F5F5F5",
+					"dark": "#444444"
                 },
                 "screenshots": [
                     "resources/store/screenshots/screen_1.png"
                 ],
                 "icons": {
-                    "light": "#F5F5F5",
-					"dark": "#444444"
+                    "light": "resources/store/icons",
+                    "dark": "resources/store/icons"
                 },
                 "categories": [
                     "specAbilities",
