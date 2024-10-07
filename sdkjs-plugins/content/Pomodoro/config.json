@@ -15,9 +15,9 @@
     "offered": "DeepPurpleApril",
     "variations": [
         {
-            "description"         : "Pomodoro",
+            "description"         : "番茄钟计时器旨在使用25分钟工作5分钟休息交替反复番茄工作法，帮助您保持专注。",
             "url"                 : "index.html",
-            "icons"               : ["resources/store/icons/icon.png", "resources/store/icons/icon@2x.png"],
+            "icons"               : ["resources/store/light/icon.png", "resources/store/light/icon@2x.png"],
             "isViewer"            : false,
             "EditorsSupport"      :["word", "cell", "slide", "pdf"],
             "isVisual"            : true,
@@ -27,6 +27,23 @@
             "initData"            : "",
             "isUpdateOleOnResize" : true,
             "events"              : ["onClick"],
+            "store": {
+                "background": {
+                    "light": "#7c84e8",
+                    "dark": "#5f55af"
+                },
+                "screenshots": [
+                    "resources/store/screenshots/screen_1.png"
+                ],
+                "icons": {
+                    "light": "resources/store/icons",
+                    "dark": "resources/store/icons"
+                },
+                "categories": [
+                    "specAbilities",
+                    "work"
+                ]
+            },
             "buttons"             : [
                 { 
                     "text": "Start",
@@ -43,7 +60,6 @@
         {
             "description"         : "About",
             "url"                 : "index_about.html",
-            "icons"               : ["resources/store/icons/icon.png", "resources/store/icons/icon@2x.png"],
             "isViewer"            : false,
             "EditorsSupport"      : ["word", "cell", "slide", "pdf"],
             "isVisual"            : true,
