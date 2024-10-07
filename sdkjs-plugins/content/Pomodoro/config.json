@@ -27,7 +27,7 @@
             "initData"            : "",
             "isUpdateOleOnResize" : true,
             "events"              : ["onClick"],
-            "store": {
+            "store"               : {
                 "background": {
                     "light": "#7c84e8",
                     "dark": "#5f55af"
@@ -36,8 +36,8 @@
                     "resources/store/screenshots/screen_1.png"
                 ],
                 "icons": {
-                    "light": "resources/store/icons",
-                    "dark": "resources/store/icons"
+                    "light": "#F5F5F5",
+					"dark": "#444444"
                 },
                 "categories": [
                     "specAbilities",
