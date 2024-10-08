@@ -1,9 +1,5 @@
 {
     "baseUrl": "",
-    "group": {
-        "name": "Macros",
-        "rank": 2
-    },
     "guid": "asc.{1FE1F46-2EA3-5392-A90E-5CC84940B755}",
     "help": "",
     "minVersion": "6.3.0",
