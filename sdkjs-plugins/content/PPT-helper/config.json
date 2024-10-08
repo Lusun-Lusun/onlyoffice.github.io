@@ -1,0 +1,108 @@
+{
+    "baseUrl": "",
+    "group": {
+        "name": "Macros",
+        "rank": 2
+    },
+    "guid": "asc.{1FE1F46-2EA3-5392-A90E-5CC84940B755}",
+    "help": "",
+    "minVersion": "6.3.0",
+    "name": "PPT-helper",
+    "nameLocale": {
+        "fr": "PPT-helper",
+        "es": "PPT-helper"
+    },
+    "offered": "DeepPurpleApril",
+    "variations": [
+        {
+            "description"         : "PPT小助手使用讯飞智文API，提供多种模板的PPT自动生成、大纲生成功能。",
+            "url"                 : "index.html",
+            "icons"               : ["resources/store/light/icon.png", "resources/store/light/icon@2x.png"],
+            "isViewer"            : false,
+            "EditorsSupport"      :["slide"],
+            "isVisual"            : true,
+            "isModal"             : true,
+            "isInsideMode"        : true,
+            "initDataType"        : "none",
+            "initData"            : "",
+            "isUpdateOleOnResize" : true,
+            "events"              : ["onClick"],
+            "store"               : {
+                "background": {
+                    "light": "#F5F5F5",
+					"dark": "#444444"
+                },
+                "screenshots": [
+                    "resources/store/screenshots/screen_1.png"
+                ],
+                "icons": {
+                    "light": "resources/store/icons",
+                    "dark": "resources/store/icons"
+                },
+                "categories": [
+                    "specAbilities",
+                    "work"
+                ]
+            },
+            "buttons"             : [
+                { 
+                    "text": "Start",
+                    "primary": false, 
+                    "isviewer": false
+                },
+                { 
+                    "text": "Reset",
+                    "primary": false, 
+                    "isviewer": false
+                }
+            ]
+        },
+        {
+            "description"         : "About",
+            "url"                 : "index_about.html",
+            "isViewer"            : false,
+            "EditorsSupport"      : ["slide"],
+            "isVisual"            : true,
+            "isModal"             : true,
+            "isInsideMode"        : false,
+            "initDataType"        : "none",
+            "initData"            : "",
+            "isUpdateOleOnResize" : true,
+            "buttons"         : [
+                {
+                    "text": "Ok",
+                    "primary": true
+                }
+            ],
+
+            "size" : [392, 160]
+        },
+        {
+            "description": "Setting",
+            "url": "index_setting.html",
+            "isViewer": false,
+            "EditorsSupport": ["slide"],
+            "isVisual": true,
+            "isModal": true,
+            "isInsideMode": false,
+            "initDataType": "none",
+            "initData": "",
+            "isUpdateOleOnResize": true,
+            "buttons": [
+                {
+                    "text": "Ok",
+                    "textLocale": {
+                        "zh": "确定",
+                        "de": "Ok",
+                        "ru": "Ok",
+                        "fr": "Ok",
+                        "es": "Ok"
+                    },
+                    "primary": true
+                }
+            ],
+            "size": [392, 250]
+        }
+    ],
+    "version": "1.0"
+}
