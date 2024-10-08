@@ -26,7 +26,7 @@
             "store"               : {
                 "background": {
                     "light": "#F5F5F5",
-					"dark": "#444444"
+					"dark": "#C8CA66"
                 },
                 "screenshots": [
                     "resources/store/screenshots/screen_1.png"
