@@ -17,7 +17,6 @@ whiteNoiseAudio.loop = true;
 window.Asc.plugin.init = function () {
     localStorage.setItem('focusTime', 25);
     localStorage.setItem('breakTime', 5);
-    updateWhiteNoise();
 }
 
 // 格式化时间显示为MM:SS
@@ -58,10 +57,12 @@ startStopBtn.addEventListener('click', function() {
         // 如果计时器正在运行，则停止
         clearInterval(timerInterval);
         timerInterval = null;
+        whiteNoiseAudio.pause(); // 停止白噪音
         startStopBtn.textContent = 'Start';
     } else {
         // 启动计时器
         timerInterval = setInterval(countdown, 1000);
+        updateWhiteNoise();
         startStopBtn.textContent = 'Pause';
     }
 });
@@ -97,6 +98,7 @@ function countdown() {
 resetBtn.addEventListener('click', function() {
     clearInterval(timerInterval);
     timerInterval = null;
+    whiteNoiseAudio.pause();  // 重置时停止白噪音
     isFocusMode = true;
     currentTime = focusTime; // 重置为专注时间
     updateTimerDisplay();

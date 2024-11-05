@@ -6,7 +6,8 @@
     "name": "Pomodoro",
     "nameLocale": {
         "fr": "Pomodoro",
-        "es": "Pomodoro"
+        "es": "Pomodoro",
+        "zh": "番茄钟"
     },
     "offered": "DeepPurpleApril",
     "variations": [
