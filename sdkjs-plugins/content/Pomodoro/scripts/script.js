@@ -1,8 +1,8 @@
-let currentTime = localStorage.getItem('focusTime') * 60; // 当前倒计时（默认开始为专注时间）
-let isFocusMode = true; // 默认是专注模式
-let timerInterval; // 用于存储计时器的interval
-let focusTime = localStorage.getItem('focusTime') * 60; // 专注时间（分钟）
-let breakTime = localStorage.getItem('breakTime') * 60; // 休息时间（分钟）
+let currentTime = localStorage.getItem('focusTime') * 60;
+let isFocusMode = true;
+let timerInterval;
+let focusTime = localStorage.getItem('focusTime') * 60;
+let breakTime = localStorage.getItem('breakTime') * 60;
 let whiteNoise = localStorage.getItem('whiteNoise');
 
 const timerDisplay = document.getElementById('timer');
@@ -10,6 +10,7 @@ const modeDisplay = document.getElementById('mode');
 const startStopBtn = document.getElementById('start-stop');
 const resetBtn = document.getElementById('reset');
 const notificationDisplay = document.getElementById('notification');
+const whiteNoiseBtn = document.getElementById('white-noise-btn');
 const alertSound = new Audio('resources/store/sound/Notification.mp3');
 const whiteNoiseAudio = new Audio();
 whiteNoiseAudio.loop = true;
@@ -17,6 +18,19 @@ whiteNoiseAudio.loop = true;
 window.Asc.plugin.init = function () {
     localStorage.setItem('focusTime', 25);
     localStorage.setItem('breakTime', 5);
+    applyLocalization();  // 初始化时应用本地化
+};
+
+window.Asc.plugin.onTranslate = function() {
+    applyLocalization(); // 切换语言时应用本地化
+};
+
+// 应用本地化翻译
+function applyLocalization() {
+    modeDisplay.innerHTML = isFocusMode ? window.Asc.plugin.tr("Focus Time") : window.Asc.plugin.tr("Break Time");
+    startStopBtn.textContent = timerInterval ? window.Asc.plugin.tr("Pause") : window.Asc.plugin.tr("Start");
+    resetBtn.textContent = window.Asc.plugin.tr("Reset");
+    whiteNoiseBtn.textContent = whiteNoiseAudio.paused ? window.Asc.plugin.tr("Play White Noise") : window.Asc.plugin.tr("Stop White Noise");
 }
 
 // 格式化时间显示为MM:SS
@@ -26,24 +40,30 @@ function formatTime(seconds) {
     return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
 
-// 更新白噪音文件
-function updateWhiteNoise() {
-    const selectedNoise = whiteNoise || 'none'; // 设置默认值，如果没有白噪音选择，则默认为 rain
-    if (selectedNoise === 'none') {
-        whiteNoiseAudio.pause(); // 停止音频播放
+// 独立的白噪音播放控制
+function toggleWhiteNoise() {
+    if (whiteNoiseAudio.paused) {
+        const selectedNoise = whiteNoise || 'none';
+        if (selectedNoise === 'none') {
+            updatePageNotification(window.Asc.plugin.tr("No white noise selected."));
+        } else {
+            whiteNoiseAudio.src = `resources/store/whiteNoise/${selectedNoise}.mp3`;
+            whiteNoiseAudio.load();
+            whiteNoiseAudio.play().catch(error => {
+                console.log("Audio playback failed due to browser policies:", error);
+            });
+            whiteNoiseBtn.textContent = window.Asc.plugin.tr("Stop White Noise");
+        }
     } else {
-        whiteNoiseAudio.src = `resources/store/whiteNoise/${selectedNoise}.mp3`; // 更新音频源
-        whiteNoiseAudio.load(); // 重新加载新音频文件
-        whiteNoiseAudio.play().catch(error => {
-            console.log("Audio playback failed due to browser policies:", error);
-        }); // 开始播放，如果出现问题则捕获异常
+        whiteNoiseAudio.pause();
+        whiteNoiseBtn.textContent = window.Asc.plugin.tr("Play White Noise");
     }
 }
 
 // 页面内通知显示
 function updatePageNotification(message) {
     notificationDisplay.textContent = message;
-    notificationDisplay.style.color = 'red'; // 可以根据需求调整样式
+    notificationDisplay.style.color = 'red';
 }
 
 // 更新计时器显示
@@ -54,16 +74,12 @@ function updateTimerDisplay() {
 // 开始或暂停计时器
 startStopBtn.addEventListener('click', function() {
     if (timerInterval) {
-        // 如果计时器正在运行，则停止
         clearInterval(timerInterval);
         timerInterval = null;
-        whiteNoiseAudio.pause(); // 停止白噪音
-        startStopBtn.textContent = 'Start';
+        startStopBtn.textContent = window.Asc.plugin.tr("Start");
     } else {
-        // 启动计时器
         timerInterval = setInterval(countdown, 1000);
-        updateWhiteNoise();
-        startStopBtn.textContent = 'Pause';
+        startStopBtn.textContent = window.Asc.plugin.tr("Pause");
     }
 });
 
@@ -73,39 +89,40 @@ function countdown() {
         currentTime--;
         updateTimerDisplay();
     } else {
-        // 倒计时结束，自动切换模式
         if (isFocusMode) {
             alertSound.play();
-            updatePageNotification('Focus time is over! Time for a break.');
-            currentTime = breakTime; // 切换到休息时间
-            modeDisplay.textContent = 'Break Time';
+            updatePageNotification(window.Asc.plugin.tr("Focus time is over! Time for a break."));
+            currentTime = breakTime;
+            modeDisplay.textContent = window.Asc.plugin.tr("Break Time");
             clearInterval(timerInterval);
             timerInterval = null;
-            startStopBtn.textContent = 'Start';
+            startStopBtn.textContent = window.Asc.plugin.tr("Start");
         } else {
             alertSound.play();
-            updatePageNotification('Break time is over! Time to work.');
-            currentTime = focusTime; // 切换到专注时间
-            modeDisplay.textContent = 'Focus Time';
+            updatePageNotification(window.Asc.plugin.tr("Break time is over! Time to work."));
+            currentTime = focusTime;
+            modeDisplay.textContent = window.Asc.plugin.tr("Focus Time");
         }
-        isFocusMode = !isFocusMode; // 切换模式
+        isFocusMode = !isFocusMode;
         updateTimerDisplay();
     }
 }
-
 
 // 重置计时器
 resetBtn.addEventListener('click', function() {
     clearInterval(timerInterval);
     timerInterval = null;
-    whiteNoiseAudio.pause();  // 重置时停止白噪音
     isFocusMode = true;
-    currentTime = focusTime; // 重置为专注时间
+    currentTime = focusTime;
     updateTimerDisplay();
-    modeDisplay.textContent = 'Focus Time';
-    notificationDisplay.textContent = ''; // 清空通知内容
-    startStopBtn.textContent = 'Start';
+    modeDisplay.textContent = window.Asc.plugin.tr("Focus Time");
+    notificationDisplay.textContent = '';
+    startStopBtn.textContent = window.Asc.plugin.tr("Start");
 });
+
+// 独立的白噪音控制按钮
+whiteNoiseBtn.addEventListener('click', toggleWhiteNoise);
 
 // 页面加载时更新默认显示
 updateTimerDisplay();
+applyLocalization();  // 初始化应用本地化

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Settings</title>
+    <title>Setting</title>
     <script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js"></script>
     <script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js"></script>
     <link rel="stylesheet" href="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css">
@@ -18,20 +18,21 @@
         label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
         }
         select, input {
-            width: 50%;
-            padding: 7px;
-            font-size: 13px;
+            width: 70%;
+            padding: 5px; /* 改小输入框高度 */
+            font-size: 14px;
             border-radius: 5px;
             box-sizing: border-box;
         }
     </style>
     <script type="text/javascript">
         window.Asc.plugin.init = function() {
-            let focusTime = 25; // Focus time (25 minutes)
+            let focusTime = 25; // 专注时间
             document.getElementById('focusTime').value = focusTime;
-            let breakTime = 5; // Break time (5 minutes)
+            let breakTime = 5; // 休息时间
             document.getElementById('breakTime').value = breakTime;
         };
 
@@ -46,6 +47,16 @@
 
             this.executeCommand("close", "");
         };
+        
+        window.Asc.plugin.onTranslate = () => {
+            document.querySelector("#label_chooseWhiteNoise").innerHTML = window.Asc.plugin.tr("Choose White Noise");
+            document.querySelector("#label_focusTime").innerHTML = window.Asc.plugin.tr("Focus Time:");
+            document.querySelector("#label_breakTime").innerHTML = window.Asc.plugin.tr("Break Time:");
+            document.querySelector("#minutes_focus").innerHTML = window.Asc.plugin.tr("minutes");
+            document.querySelector("#minutes_break").innerHTML = window.Asc.plugin.tr("minutes");
+            document.querySelector("#focusTime").placeholder = window.Asc.plugin.tr("25");
+            document.querySelector("#breakTime").placeholder = window.Asc.plugin.tr("5");
+        };
     </script>
 </head>
 <body>
@@ -58,15 +69,16 @@
             <option value="rain">Rain</option>
         </select>
     </div>
+    <div style="margin-top: 20px;">
     <div>
-        <label for="focusTime">Focus Time:</label>
+        <label for="focusTime" id="label_focusTime">Focus Time:</label>
         <input type="text" id="focusTime" placeholder="25">
-        <span>minutes</span>
+        <span id="minutes_focus">minutes</span>
     </div>
     <div>
-        <label for="breakTime">Break Time:</label>
+        <label for="breakTime" id="label_breakTime">Break Time:</label>
         <input type="text" id="breakTime" placeholder="5">
-        <span>minutes</span>
+        <span id="minutes_break">minutes</span>
     </div>
 </body>
 </html>
