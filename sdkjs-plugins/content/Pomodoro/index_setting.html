@@ -22,7 +22,7 @@
         }
         select, input {
             width: 70%;
-            padding: 5px; /* 改小输入框高度 */
+            padding: 5px;
             font-size: 14px;
             border-radius: 5px;
             box-sizing: border-box;
@@ -30,9 +30,9 @@
     </style>
     <script type="text/javascript">
         window.Asc.plugin.init = function() {
-            let focusTime = 25; // 专注时间
+            let focusTime = 25;
             document.getElementById('focusTime').value = focusTime;
-            let breakTime = 5; // 休息时间
+            let breakTime = 5;
             document.getElementById('breakTime').value = breakTime;
         };
 
@@ -56,6 +56,12 @@
             document.querySelector("#minutes_break").innerHTML = window.Asc.plugin.tr("minutes");
             document.querySelector("#focusTime").placeholder = window.Asc.plugin.tr("25");
             document.querySelector("#breakTime").placeholder = window.Asc.plugin.tr("5");
+
+            // 本地化白噪音选项
+            document.querySelector("#whiteNoiseSelection option[value='none']").textContent = window.Asc.plugin.tr("None");
+            document.querySelector("#whiteNoiseSelection option[value='flames']").textContent = window.Asc.plugin.tr("Flames");
+            document.querySelector("#whiteNoiseSelection option[value='waterflow']").textContent = window.Asc.plugin.tr("Water Flow");
+            document.querySelector("#whiteNoiseSelection option[value='rain']").textContent = window.Asc.plugin.tr("Rain");
         };
     </script>
 </head>

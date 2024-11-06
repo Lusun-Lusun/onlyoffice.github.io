@@ -5,14 +5,15 @@
     "minVersion": "6.3.0",
     "name": "Pomodoro",
     "nameLocale": {
-        "fr": "Pomodoro",
-        "es": "Pomodoro",
         "zh": "番茄钟"
     },
     "offered": "DeepPurpleApril",
     "variations": [
         {
-            "description"         : "番茄钟计时器旨在使用25分钟工作5分钟休息交替反复番茄工作法，帮助您保持专注。",
+            "description"         : "Pomodoro helps you improve focus and productivity with a cyclical pattern of 25 minutes of focused work and 5 minutes of short breaks.",
+            "descriptionLocale"   : {
+					"zh": "番茄钟计时器采用番茄工作法，以25分钟专注工作和5分钟短暂休息的循环模式，帮助您提升专注力和工作效率。"
+				},
             "url"                 : "index.html",
             "icons"               : ["resources/store/light/icon.png", "resources/store/light/icon@2x.png"],
             "isViewer"            : false,
@@ -56,6 +57,9 @@
         },
         {
             "description"         : "About",
+            "descriptionLocale"   : {
+					"zh": "关于"
+				},
             "url"                 : "index_about.html",
             "isViewer"            : false,
             "EditorsSupport"      : ["word", "cell", "slide", "pdf"],
@@ -75,7 +79,10 @@
             "size" : [392, 160]
         },
         {
-            "description": "Setting",
+            "description": "Settings",
+            "descriptionLocale"   : {
+					"zh": "设置"
+				},
             "url": "index_setting.html",
             "isViewer": false,
             "EditorsSupport": ["word", "cell", "slide", "pdf"],

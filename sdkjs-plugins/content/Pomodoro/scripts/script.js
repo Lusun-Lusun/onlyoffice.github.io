@@ -89,21 +89,20 @@ function countdown() {
         currentTime--;
         updateTimerDisplay();
     } else {
+        alertSound.play();
         if (isFocusMode) {
-            alertSound.play();
             updatePageNotification(window.Asc.plugin.tr("Focus time is over! Time for a break."));
             currentTime = breakTime;
             modeDisplay.textContent = window.Asc.plugin.tr("Break Time");
-            clearInterval(timerInterval);
-            timerInterval = null;
-            startStopBtn.textContent = window.Asc.plugin.tr("Start");
         } else {
-            alertSound.play();
             updatePageNotification(window.Asc.plugin.tr("Break time is over! Time to work."));
             currentTime = focusTime;
             modeDisplay.textContent = window.Asc.plugin.tr("Focus Time");
         }
         isFocusMode = !isFocusMode;
+        clearInterval(timerInterval);
+        timerInterval = null;
+        startStopBtn.textContent = window.Asc.plugin.tr("Start"); // Require manual start
         updateTimerDisplay();
     }
 }

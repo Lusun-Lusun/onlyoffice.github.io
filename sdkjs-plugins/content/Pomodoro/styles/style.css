@@ -68,3 +68,23 @@ button {
 button:hover {
     opacity: 0.8;
 }
+
+#white-noise-btn {
+    background-color: #f0f0f0; /* 浅灰色背景 */
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* 鼠标悬停时加深颜色 */
+#white-noise-btn:hover {
+    background-color: #e0e0e0; /* 悬停时更深的灰色 */
+}
+
+/* 按下时的颜色 */
+#white-noise-btn:active {
+    background-color: #d0d0d0; /* 按下时更深的灰色 */
+}

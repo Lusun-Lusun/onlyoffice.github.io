@@ -20,5 +20,8 @@
     "English": "英语",
     "Chinese": "中文",
     "Play White Noise": "播放白噪音",
-    "Stop White Noise": "停止白噪音"
+    "Stop White Noise": "停止白噪音",
+    "No white noise selected.": "未选择白噪音。",
+    "Focus time is over! Time for a break.": "专注时间结束！休息一下。",
+    "Break time is over! Time to work.": "休息时间结束！开始工作。"
 }
