@@ -72,6 +72,9 @@
             "buttons"         : [
                 {
                     "text": "Ok",
+                    "textLocale": {
+                        "zh": "确定"
+                    },
                     "primary": true
                 }
             ],
@@ -96,11 +99,7 @@
                 {
                     "text": "Ok",
                     "textLocale": {
-                        "zh": "确定",
-                        "de": "Ok",
-                        "ru": "Ok",
-                        "fr": "Ok",
-                        "es": "Ok"
+                        "zh": "确定"
                     },
                     "primary": true
                 }

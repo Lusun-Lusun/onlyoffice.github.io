@@ -74,10 +74,15 @@ function updateTimerDisplay() {
 // 开始或暂停计时器
 startStopBtn.addEventListener('click', function() {
     if (timerInterval) {
+        // Pause the timer
         clearInterval(timerInterval);
         timerInterval = null;
         startStopBtn.textContent = window.Asc.plugin.tr("Start");
     } else {
+        // Clear notification when starting a new session
+        notificationDisplay.textContent = "";
+        
+        // Start the timer
         timerInterval = setInterval(countdown, 1000);
         startStopBtn.textContent = window.Asc.plugin.tr("Pause");
     }
@@ -90,6 +95,7 @@ function countdown() {
         updateTimerDisplay();
     } else {
         alertSound.play();
+
         if (isFocusMode) {
             updatePageNotification(window.Asc.plugin.tr("Focus time is over! Time for a break."));
             currentTime = breakTime;
@@ -99,10 +105,14 @@ function countdown() {
             currentTime = focusTime;
             modeDisplay.textContent = window.Asc.plugin.tr("Focus Time");
         }
+
         isFocusMode = !isFocusMode;
+
+        // Stop the timer and reset the Start/Pause button
         clearInterval(timerInterval);
         timerInterval = null;
-        startStopBtn.textContent = window.Asc.plugin.tr("Start"); // Require manual start
+        startStopBtn.textContent = window.Asc.plugin.tr("Start");
+        
         updateTimerDisplay();
     }
 }
