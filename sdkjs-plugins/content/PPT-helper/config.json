@@ -5,13 +5,15 @@
     "minVersion": "6.3.0",
     "name": "PPT-helper",
     "nameLocale": {
-        "fr": "PPT-helper",
-        "es": "PPT-helper"
+        "zh": "PPT小助手"
     },
     "offered": "DeepPurpleApril",
     "variations": [
         {
-            "description"         : "PPT小助手使用讯飞智文API，提供多种模板的PPT自动生成、大纲生成功能。",
+            "description"         : "PPT-helper uses Spark LLM API to provide a variety of templates for PPT automatic generation, outline generation function.",
+            "descriptionLocale": {
+                "zh": "PPT小助手使用讯飞智文API，提供多种模板的PPT自动生成、大纲生成功能。"
+            },
             "url"                 : "index.html",
             "icons"               : ["resources/store/light/icon.png", "resources/store/light/icon@2x.png"],
             "isViewer"            : false,
@@ -22,7 +24,7 @@
             "initDataType"        : "none",
             "initData"            : "",
             "isUpdateOleOnResize" : true,
-            "events"              : ["onClick"],
+            "events"              : ["onAddComment"],
             "store"               : {
                 "background": {
                     "light": "#F5F5F5",
@@ -39,22 +41,13 @@
                     "specAbilities",
                     "work"
                 ]
-            },
-            "buttons"             : [
-                { 
-                    "text": "Start",
-                    "primary": false, 
-                    "isviewer": false
-                },
-                { 
-                    "text": "Reset",
-                    "primary": false, 
-                    "isviewer": false
-                }
-            ]
+            }
         },
         {
             "description"         : "About",
+            "descriptionLocale": {
+                "zh": "关于"
+            },
             "url"                 : "index_about.html",
             "isViewer"            : false,
             "EditorsSupport"      : ["slide"],
@@ -67,6 +60,9 @@
             "buttons"         : [
                 {
                     "text": "Ok",
+                    "textLocale": {
+                        "zh": "确定"
+                    },
                     "primary": true
                 }
             ],
@@ -75,6 +71,9 @@
         },
         {
             "description": "Setting",
+            "descriptionLocale": {
+                "zh": "设置"
+            },
             "url": "index_setting.html",
             "isViewer": false,
             "EditorsSupport": ["slide"],
@@ -88,11 +87,7 @@
                 {
                     "text": "Ok",
                     "textLocale": {
-                        "zh": "确定",
-                        "de": "Ok",
-                        "ru": "Ok",
-                        "fr": "Ok",
-                        "es": "Ok"
+                        "zh": "确定"
                     },
                     "primary": true
                 }

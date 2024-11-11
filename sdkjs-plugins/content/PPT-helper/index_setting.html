@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting</title>
+    <script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js"></script>
+    <script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js"></script>
+    <link rel="stylesheet" href="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        div {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+    <script type="text/javascript">
+        window.Asc.plugin.init = function()
+        {
+            this.resizeWindow(392, 200, 392, 147, 392, 147);
+
+            let appId = localStorage.getItem('appId');
+            document.getElementById('appIdInput').value = appId;
+            let secret = localStorage.getItem('secret');
+            document.getElementById('apiSecretInput').value = secret;
+        };
+
+        window.Asc.plugin.button = function(id)
+        {
+            let appId = document.getElementById('appIdInput').value;
+            let secret = document.getElementById('apiSecretInput').value;
+
+            localStorage.setItem('appId', appId);
+            localStorage.setItem('secret', secret);
+
+            this.executeCommand("close", "");
+        };
+    </script>
+</head>
+<body>
+    <div>
+        <label for="appIdInput">讯飞智能PPT生成APPID:</label>
+        <input type="text" id="appIdInput" placeholder="Input Your APPID">
+    </div>
+    <div>
+        <label for="apiSecretInput">讯飞智能PPT生成APISecret:</label>
+        <input type="text" id="apiSecretInput" placeholder="Input Your APISecret">
+    </div>
+</body>
+</html>
