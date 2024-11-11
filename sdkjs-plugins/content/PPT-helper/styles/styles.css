@@ -1,0 +1,106 @@
+html, body {
+    height: 100%;  /* 确保页面的根元素和 body 高度都占满整个视口 */
+    margin: 0;  /* 去掉默认的 margin */
+    padding: 0;  /* 去掉默认的 padding */
+}
+
+.chat-container {
+    width: 100%;  /* 使容器宽度占满整个视口 */
+    max-width: 400px;  /* 可根据需要调整 */
+    margin: 0 auto;  /* 水平居中 */
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;  /* 使用视口高度填满屏幕 */
+    box-sizing: border-box; /* 包括内边距和边框在内的宽度计算 */
+}
+
+.message-history {
+    flex-grow: 1;  /* 让消息历史区域占满剩余的空间 */
+    overflow-y: auto;
+    border: 1px solid #e1c3c3;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-sizing: border-box;  /* 让空间计算不超出容器 */
+}
+
+.message-history::-webkit-scrollbar {
+    width: 6px;
+}
+
+.message-history::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+}
+
+.message-input-area {
+    width: 100%;  /* 使输入区域宽度与 chat-container 宽度一致 */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #e1c3c3;
+    margin-top: 10px;
+    box-sizing: border-box;  /* 使输入区域宽度计算包含内边距和边框 */
+    position: sticky;
+    bottom: 0;  /* 固定在底部 */
+}
+
+.message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    resize: vertical;
+    min-width: 50%;
+}
+
+.send-button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.send-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.user-message, .ai-message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.ai-message {
+    align-self: flex-start;
+    background-color: #d2e1f4;
+    color: #000;
+}
+
+.typing-indicator {
+    display: none;
+    margin-top: 10px;
+    color: #888;
+    font-style: italic;
+}

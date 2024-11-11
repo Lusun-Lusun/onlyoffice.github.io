@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPT 小助手</title>
+    <script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js"></script>
+    <script type="text/javascript" src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/10.5.8/jsrsasign-all-min.js"></script>
+    <link rel="stylesheet" href="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="scripts/init.js"></script>
+    <script src="scripts/conversation.js"></script>
+    <script src="scripts/security.js"></script>
+    <script src="scripts/api.js"></script>
+</head>
+
+<body>
+    <div id="credentialReminder" style="display: none; color: red; text-align: center;">
+        请填写 APPId 和 APISecret 以启用功能。
+    </div>
+    <div class="chat-container">
+        <div class="message-history" id="messageHistory">
+            <!-- Historical messages will appear here -->
+        </div>
+        <div class="message-input-area">
+            <!-- 用户输入框和按钮会动态插入到这里 -->
+        </div>
+    </div>
+</body>
+</html>
