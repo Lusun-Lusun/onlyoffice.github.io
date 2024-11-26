@@ -136,8 +136,13 @@ ${data.outline.chapters.map(chapter => {
     confirmContainer.classList.add('confirm-container');
     confirmContainer.innerHTML = `
         <button id="confirmButton" onclick="onConfirmOutline()" style="display: none;">确认</button>
+<<<<<<< HEAD
         <button id="regenerateBtn" onclick="onRejectOutline()" style="background: transparent; border: none; padding: 0;">
             <img src="resources/reload.png" alt="Regenerate" style="width: 20px; height: 20px;">
+=======
+        <button id="regenerateBtn" onclick="onRejectOutline()">
+            <img src="resources/reload.png" alt="Regenerate" style="width: 20px; height: 40px;">
+>>>>>>> 4ca4b32ff9b95f3d7ebccc77c7d0f5c80c2fdc8f
         </button>
     `;
     messageHistory.appendChild(confirmContainer);
